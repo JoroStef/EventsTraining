@@ -1,0 +1,23 @@
+.conteiner{
+    display: flex;
+    height: 100%;
+}
+
+
+.left-section{
+    flex: 1;   
+    background-color: burlywood;
+    width: 75%;
+    text-align: center;
+}
+
+.splitter{
+    background-color: blueviolet;
+    width: 10px;
+}
+
+.right-section{
+    background-color: cornflowerblue;
+    width: 25%;
+    text-align: center;
+}
