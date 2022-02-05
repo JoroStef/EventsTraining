@@ -1,0 +1,32 @@
+.conteiner {
+    display: flex;
+    height: calc(100% - 10px);
+    overflow: auto;
+}
+
+.left-section {
+    flex: 1;
+    background-color: burlywood;
+}
+
+.splitter {
+    background-color: blueviolet;
+    /* width: 1%; */
+    width: 0.6rem;
+    cursor: col-resize;
+}
+
+.right-section {
+    background-color: cornflowerblue;
+    width: 25%;
+    min-width: 10%;
+}
+
+.toggle-icon {
+    cursor: pointer;
+}
+
+.p-text {
+    margin: 0.6rem;
+    /* padding: 0px; */
+}

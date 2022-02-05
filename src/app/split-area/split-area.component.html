@@ -1,0 +1,25 @@
+<p>split-area works!</p>
+
+<div class="conteiner">
+
+    <div class="left-section" id="left-section">
+        <p class="p-text">
+            Integer elementum leo pharetra quam commodo euismod. Pellentesque a leo sit amet erat pretium pulvinar vel quis odio. Suspendisse viverra euismod mi vel elementum. Etiam faucibus interdum semper. Cras eu odio at libero dignissim gravida at sollicitudin tortor. In vel arcu vitae purus aliquam sagittis. Nunc sed ligula lacus. Maecenas vehicula ex eget auctor feugiat. Duis in risus sollicitudin, pharetra magna a, lacinia justo. Donec at nunc sollicitudin tortor facilisis molestie. Etiam porta nibh id leo rutrum blandit. Aenean dui ex, porttitor id aliquet eu, sagittis a nunc.
+        </p>
+    </div>
+
+    <div class="splitter" id="splitter">
+        <p class="toggle-icon" (click)="toggleRightSection()">
+            >
+        </p>
+    </div>
+    
+    <div class="right-section" id="right-section" [hidden]="!rightAreaVisible">
+        <!-- <label>label</label>
+        <input> -->
+        <p class="p-text">
+            Integer in enim quam. Curabitur sed ornare quam. In in leo in ipsum elementum congue at at mauris. Phasellus at sapien venenatis erat lacinia placerat eget eu magna. Pellentesque in consequat eros. Proin porta id tortor ut facilisis. Integer varius lorem sit amet tortor mollis dignissim. Nulla sed volutpat sapien, at auctor lectus.
+        </p>
+    </div>
+
+</div>
