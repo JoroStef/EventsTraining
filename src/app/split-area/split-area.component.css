@@ -5,7 +5,6 @@
 
 
 .left-section{
-    flex: 1;   
     background-color: burlywood;
     width: 75%;
     text-align: center;
@@ -14,10 +13,16 @@
 .splitter{
     background-color: blueviolet;
     width: 10px;
+    cursor: col-resize;
 }
 
 .right-section{
+    flex: 1;
     background-color: cornflowerblue;
     width: 25%;
     text-align: center;
+}
+
+.toggle-icon{
+    cursor: pointer;
 }

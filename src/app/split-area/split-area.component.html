@@ -7,9 +7,10 @@
     </div>
 
     <div class="splitter" id="splitter">
+        <p class="toggle-icon" (click)="this.toggleRightSection()">></p>
     </div>
     
-    <div class="right-section" id="right-section">
+    <div class="right-section" id="right-section" *ngIf="this.rightAreaVisible">
         <p>2</p>
     </div>
 
