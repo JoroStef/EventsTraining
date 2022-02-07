@@ -60,8 +60,6 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
 
         // this.renderer.setStyle(this.rightSection, 'width', newRightWidth);
         this.renderer.setStyle(this.leftSection, 'width', newLeftWidth);
-        console.log(this.leftSection)
-        console.log(this.rightSection)
 
         x = e.clientX;
       }
@@ -80,7 +78,14 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
     if (this.rightAreaVisible) {
       this.renderer.setStyle(this.leftSection, 'width', '75%');
     } else {
+      // const parentWidth = parseFloat((window.getComputedStyle(this.parent).width).split('px')[0]);
+
+      // const newLeftWidth = (100 * (parentWidth + 10) / parentWidth) + '%';
+
+      // this.renderer.setStyle(this.leftSection, 'width', newLeftWidth);
+
       this.renderer.setStyle(this.leftSection, 'width', '100%');
+
     }
   }
 }
