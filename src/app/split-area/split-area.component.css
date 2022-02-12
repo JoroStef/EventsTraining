@@ -1,6 +1,6 @@
 .conteiner {
     display: flex;
-    height: calc(100vh - 10px);
+    height: calc(100% - 10px);
     overflow: auto;
 }
 
@@ -19,6 +19,7 @@
 .right-section {
     background-color: cornflowerblue;
     width: 25%;
+    min-width: 10%;
 }
 
 .toggle-icon {
@@ -26,5 +27,5 @@
 }
 
 .p-text {
-    margin: 10px;
+    margin: 0px;
 }

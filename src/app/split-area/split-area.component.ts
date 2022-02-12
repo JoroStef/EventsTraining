@@ -40,7 +40,6 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
     let x = 0;
 
     mouseDown.subscribe(e => {
-      console.log('right section: ', this.rightSection)
       this.isDragging = true;
       x = e.clientX
     });
@@ -48,9 +47,8 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
     mouseMoves.subscribe(e => {
       if (this.isDragging) {
         this.rightAreaVisible = true;
-
         const dx = e.clientX - x;
-        console.log(dx)
+
         const rightWidth2 = this.rightSection.offsetWidth as number;
         const leftWidth2 = this.leftSection.offsetWidth as number;
         const parentWidth2 = this.parent.offsetWidth as number;
@@ -74,11 +72,8 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
   public toggleRightSection() {
     this.rightAreaVisible = !this.rightAreaVisible;
 
-    console.log(document)
     if (this.rightAreaVisible) {
       this.renderer.setStyle(this.rightSection, 'width', '25%');
-    } else {
-      this.renderer.setStyle(this.rightSection, 'width', '0%');
     }
   }
 }
