@@ -33,33 +33,32 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
   }
 
   public configureDraggable() {
-    let mouseDown = fromEvent<MouseEvent>(this.splitter, 'mousedown', { capture: false });
-    let mouseMoves = fromEvent<MouseEvent>(this.parent, 'mousemove', { capture: false });
-    let mouseUp = fromEvent<MouseEvent>(this.splitter, 'mouseup', { capture: false });
+    let mouseDown = fromEvent<MouseEvent>(this.splitter, 'mousedown', { capture: true });
+    let mouseMoves = fromEvent<MouseEvent>(this.parent, 'mousemove', { capture: true });
+    let mouseUp = fromEvent<MouseEvent>(this.parent, 'mouseup', { capture: true });
 
     let x = 0;
 
     mouseDown.subscribe(e => {
+      console.log('right section: ', this.rightSection)
       this.isDragging = true;
-      console.log(window.getComputedStyle(this.leftSection).width)
-      console.log(window.getComputedStyle(this.rightSection).width)
-
       x = e.clientX
     });
 
     mouseMoves.subscribe(e => {
       if (this.isDragging) {
         this.rightAreaVisible = true;
+
         const dx = e.clientX - x;
-        const rightWidth = parseFloat((window.getComputedStyle(this.rightSection).width).split('px')[0]);
-        const leftWidth = parseFloat((window.getComputedStyle(this.leftSection).width).split('px')[0]);
-        const parentWidth = parseFloat((window.getComputedStyle(this.parent).width).split('px')[0]);
+        console.log(dx)
+        const rightWidth2 = this.rightSection.offsetWidth as number;
+        const leftWidth2 = this.leftSection.offsetWidth as number;
+        const parentWidth2 = this.parent.offsetWidth as number;
+        const splitterWidth2 = this.splitter.offsetWidth as number;
 
-        const newRightWidth = (100 * (rightWidth - dx) / parentWidth) + '%';
-        const newLeftWidth = (100 * (leftWidth + dx) / parentWidth) + '%';
-
-        // this.renderer.setStyle(this.rightSection, 'width', newRightWidth);
-        this.renderer.setStyle(this.leftSection, 'width', newLeftWidth);
+        this.splitter.style.left = `${this.splitter.offsetLeft + dx}px`;
+        const newRightWidth = (100 * (rightWidth2 - dx) / parentWidth2) + '%';
+        this.renderer.setStyle(this.rightSection, 'width', newRightWidth);
 
         x = e.clientX;
       }
@@ -75,17 +74,11 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
   public toggleRightSection() {
     this.rightAreaVisible = !this.rightAreaVisible;
 
+    console.log(document)
     if (this.rightAreaVisible) {
-      this.renderer.setStyle(this.leftSection, 'width', '75%');
+      this.renderer.setStyle(this.rightSection, 'width', '25%');
     } else {
-      // const parentWidth = parseFloat((window.getComputedStyle(this.parent).width).split('px')[0]);
-
-      // const newLeftWidth = (100 * (parentWidth + 10) / parentWidth) + '%';
-
-      // this.renderer.setStyle(this.leftSection, 'width', newLeftWidth);
-
-      this.renderer.setStyle(this.leftSection, 'width', '100%');
-
+      this.renderer.setStyle(this.rightSection, 'width', '0%');
     }
   }
 }

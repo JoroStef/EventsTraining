@@ -1,28 +1,30 @@
-.conteiner{
+.conteiner {
     display: flex;
-    height: 100%;
+    height: calc(100vh - 10px);
+    overflow: auto;
 }
 
-
-.left-section{
+.left-section {
+    flex: 1;
     background-color: burlywood;
     width: 75%;
-    text-align: center;
 }
 
-.splitter{
+.splitter {
     background-color: blueviolet;
     width: 10px;
     cursor: col-resize;
 }
 
-.right-section{
-    flex: 1;
+.right-section {
     background-color: cornflowerblue;
     width: 25%;
-    text-align: center;
 }
 
-.toggle-icon{
+.toggle-icon {
     cursor: pointer;
+}
+
+.p-text {
+    margin: 10px;
 }
