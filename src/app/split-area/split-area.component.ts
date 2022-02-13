@@ -9,6 +9,7 @@ import { fromEvent } from 'rxjs';
 export class SplitAreaComponent implements OnInit, AfterViewInit {
 
   private isDragging = false;
+  private mouseDown = false;
   public rightAreaVisible = true;
 
   private splitter: any;
@@ -35,12 +36,13 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
   public configureDraggable() {
     let mouseDown = fromEvent<MouseEvent>(this.splitter, 'mousedown', { capture: true });
     let mouseMoves = fromEvent<MouseEvent>(this.parent, 'mousemove', { capture: true });
-    let mouseUp = fromEvent<MouseEvent>(this.parent, 'mouseup', { capture: true });
+    let mouseUp = fromEvent<MouseEvent>(window, 'mouseup', { capture: true });
 
     let x = 0;
 
     mouseDown.subscribe(e => {
       this.isDragging = true;
+      this.mouseDown = true;
       x = e.clientX
     });
 
@@ -64,16 +66,16 @@ export class SplitAreaComponent implements OnInit, AfterViewInit {
 
     mouseUp.subscribe(e => {
       this.isDragging = false;
+      this.mouseDown = false;
       x = 0;
     })
 
+    document.onselectstart = () => {
+      return !this.mouseDown;
+    }
   }
 
   public toggleRightSection() {
     this.rightAreaVisible = !this.rightAreaVisible;
-
-    if (this.rightAreaVisible) {
-      this.renderer.setStyle(this.rightSection, 'width', '25%');
-    }
   }
 }
